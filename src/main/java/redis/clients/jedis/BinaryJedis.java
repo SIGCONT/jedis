@@ -60,6 +60,7 @@ public class BinaryJedis implements BasicCommands, BinaryJedisCommands, MultiKey
     this(hp.getHost(), hp.getPort());
   }
 
+  //初始化Client字段，Client将主机名和端口号保存到字段中，未做其他处理
   public BinaryJedis(final String host, final int port) {
     client = new Client(host, port);
   }

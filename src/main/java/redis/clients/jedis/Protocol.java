@@ -17,6 +17,8 @@ import redis.clients.jedis.util.RedisInputStream;
 import redis.clients.jedis.util.RedisOutputStream;
 import redis.clients.jedis.util.SafeEncoder;
 
+
+//工具类，主要负责把命令写入到socket输出流
 public final class Protocol {
 
   private static final String ASK_PREFIX = "ASK ";
@@ -88,6 +90,7 @@ public final class Protocol {
     sendCommand(os, command.getRaw(), args);
   }
 
+  //按照Redis协议格式发送命令的核心方法
   private static void sendCommand(final RedisOutputStream os, final byte[] command,
       final byte[]... args) {
     try {

@@ -29,6 +29,10 @@ import redis.clients.jedis.params.ZIncrByParams;
 import redis.clients.jedis.util.SafeEncoder;
 import redis.clients.jedis.util.Slowlog;
 
+
+//继承层次 Jedis->BinaryJedis(继承层次比较浅，构造函数调用链也会简单)
+//常用命令委托给父类中的Client字段执行
+//一系列Commands接口对Redis支持的接口进行了分类
 public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommands,
     AdvancedJedisCommands, ScriptingCommands, BasicCommands, ClusterCommands, SentinelCommands, ModuleCommands {
 
@@ -46,6 +50,7 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
     super(hp);
   }
 
+  //根据主机名和端口号初始化，未改变当前类状态，调用父类构造函数
   public Jedis(final String host, final int port) {
     super(host, port);
   }

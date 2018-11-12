@@ -20,6 +20,9 @@ import redis.clients.jedis.params.ZAddParams;
 import redis.clients.jedis.params.ZIncrByParams;
 import redis.clients.jedis.util.SafeEncoder;
 
+
+//继承层次 Client->BinaryClient->Connection
+//主要对参数进行编码，把参数编码为字节数组，执行命令交给父类操作
 public class Client extends BinaryClient implements Commands {
 
   public Client() {
@@ -30,6 +33,7 @@ public class Client extends BinaryClient implements Commands {
     super(host);
   }
 
+  //将主机名和端口号保存到Connection字段中，未做其他处理
   public Client(final String host, final int port) {
     super(host, port);
   }

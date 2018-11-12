@@ -21,6 +21,8 @@ import redis.clients.jedis.util.RedisInputStream;
 import redis.clients.jedis.util.RedisOutputStream;
 import redis.clients.jedis.util.SafeEncoder;
 
+
+//负责和Redis服务端的交互和命令的发送，会进行异常的处理和抛出运行时异常
 public class Connection implements Closeable {
 
   private static final byte[][] EMPTY_ARGS = new byte[0][];
@@ -164,6 +166,8 @@ public class Connection implements Closeable {
   }
 
   public void connect() {
+
+    //如果socket字段不处于连接状态，则执行初始化和连接操作
     if (!isConnected()) {
       try {
         socket = new Socket();
