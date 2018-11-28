@@ -12,6 +12,9 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.jedis.exceptions.JedisException;
 import redis.clients.jedis.util.JedisURIHelper;
 
+
+//继承层次  JedisPool->JedisPoolAbstract->Pool<Jedis>
+//使用GenericObjectPool字段作为底层的对象池
 public class JedisPool extends JedisPoolAbstract {
 
   public JedisPool() {
